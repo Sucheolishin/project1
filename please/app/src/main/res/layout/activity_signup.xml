@@ -187,7 +187,7 @@
         android:textAppearance="@style/Id_Ex" />
 
     <View
-        android:id="@+id/login_Rec"
+        android:id="@+id/register_Rec"
         android:layout_width="match_parent"
         android:layout_height="39dp"
         android:layout_alignParentLeft="true"
@@ -199,7 +199,7 @@
         android:elevation="0dp" />
 
     <Button
-        android:id="@+id/login_Btn"
+        android:id="@+id/register_Btn"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_alignParentLeft="true"
@@ -209,7 +209,7 @@
         android:layout_marginRight="61dp"
         android:background="@android:color/transparent"
         android:gravity="center_horizontal|center_vertical"
-        android:text="로그인"
+        android:text="회원가입"
         android:textAppearance="@style/login_Tx"
         android:textStyle="bold" />
 </RelativeLayout>

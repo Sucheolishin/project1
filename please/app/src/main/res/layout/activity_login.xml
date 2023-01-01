@@ -84,8 +84,7 @@
         android:text="회원가입"
         android:textAppearance="@style/Rest"
         android:textColor="#000000"
-        android:textStyle="bold"
-        android:onClick="RegisterBtn"/>
+        android:textStyle="bold" />
 
     <View
         android:id="@+id/login_Rec"

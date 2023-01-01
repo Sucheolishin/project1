@@ -16,7 +16,7 @@ import org.json.JSONObject;
 
 public class LoginActivity extends Activity {
     EditText mID, mPW;
-    Button mBtnLogin;
+    Button mBtnLogin, mBtnRegister;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -26,6 +26,7 @@ public class LoginActivity extends Activity {
         mID = (EditText) findViewById(R.id.Id_Ex);
         mPW = (EditText) findViewById(R.id.pass_Ex);
         mBtnLogin = (Button) findViewById(R.id.login_Btn);
+        mBtnRegister = (Button) findViewById(R.id.Reg);
 
         //로그인 버튼을 누르면
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
@@ -65,9 +66,12 @@ public class LoginActivity extends Activity {
                 queue.add(loginRequest);
             }
         });
-    }
-    public void RegisterBtn(View view){
-        Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
+        mBtnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
