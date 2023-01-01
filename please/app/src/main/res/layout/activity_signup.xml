@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 회원가입창 -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/some_id"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clipToOutline="true"
+    android:background="@drawable/layout">
+
+    <View
+        android:id="@+id/backGround"
+        android:layout_width="match_parent"
+        android:layout_height="423dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-24dp"
+        android:layout_marginEnd="0dp"
+        android:background="@drawable/rectangle_5" />
+
+    <View
+        android:id="@+id/Input_Pad"
+        android:layout_width="match_parent"
+        android:layout_height="336dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="216dp"
+        android:layout_marginRight="23dp"
+        android:background="@drawable/rectangle_4" />
+
+    <ImageView
+        android:id="@+id/login_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        app:srcCompat="@drawable/login_logo" />
+
+    <!-- 회원가입 -->
+    <TextView
+        android:id="@+id/Nst"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="149dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="회원가입"
+        android:textAppearance="@style/Nst"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/PW"
+        android:layout_width="45dp"
+        android:layout_height="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="298dp"
+        android:gravity="center_horizontal|left|center_vertical"
+        android:text="비밀번호"
+        android:textAppearance="@style/IDst"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/ID"
+        android:layout_width="34dp"
+        android:layout_height="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="233dp"
+        android:gravity="center_horizontal|left|center_vertical"
+        android:text="아이디"
+        android:textAppearance="@style/IDst"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/input_Id"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="61dp"
+        android:layout_marginTop="253dp"
+        android:layout_marginRight="61dp"
+        android:background="@drawable/rectangle_6" />
+
+    <View
+        android:id="@+id/input_pw"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="61dp"
+        android:layout_marginTop="318dp"
+        android:layout_marginRight="61dp"
+        android:background="@drawable/rectangle_2" />
+
+    <EditText
+        android:id="@+id/Id_Ex"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="248dp"
+        android:layout_marginRight="65dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="Input ID"
+        android:inputType="text"
+        android:maxLength="16"
+        android:selectAllOnFocus="true"
+        android:textAppearance="@style/Id_Ex" />
+
+    <EditText
+        android:id="@+id/pass_Ex"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="314dp"
+        android:layout_marginRight="65dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="Input PW"
+        android:inputType="textPassword"
+        android:maxLength="16"
+        android:selectAllOnFocus="true"
+        android:textAppearance="@style/Id_Ex" />
+    <!-- 학사정보 시스템의 비밀번호를 입력해주세요! (재학생 인증) -->
+    <TextView
+        android:id="@+id/Notice"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="365dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text=" 학사정보 시스템의 비밀번호를 입력해주세요! \n (재학생 인증)"
+        android:textAppearance="@style/Notice" />
+
+    <TextView
+        android:id="@+id/PWCheck"
+        android:layout_width="80dp"
+        android:layout_height="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="399dp"
+        android:gravity="center_horizontal|left|center_vertical"
+        android:text="비밀번호확인"
+        android:textAppearance="@style/IDst"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/input_pw_check"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="61dp"
+        android:layout_marginTop="419dp"
+        android:layout_marginRight="61dp"
+        android:background="@drawable/rectangle_2" />
+
+    <EditText
+        android:id="@+id/pass_Ex_check"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="413dp"
+        android:layout_marginRight="65dp"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="Input PW_check"
+        android:inputType="textPassword"
+        android:maxLength="16"
+        android:selectAllOnFocus="true"
+        android:textAppearance="@style/Id_Ex" />
+
+    <View
+        android:id="@+id/login_Rec"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="61dp"
+        android:layout_marginTop="485dp"
+        android:layout_marginRight="61dp"
+        android:background="@drawable/rectangle_3"
+        android:elevation="0dp" />
+
+    <Button
+        android:id="@+id/login_Btn"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="61dp"
+        android:layout_marginTop="480dp"
+        android:layout_marginRight="61dp"
+        android:background="@android:color/transparent"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="로그인"
+        android:textAppearance="@style/login_Tx"
+        android:textStyle="bold" />
+</RelativeLayout>
