@@ -2,21 +2,38 @@ package com.chobo.please;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
-
 import org.json.JSONObject;
+
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class LoginActivity extends Activity {
     EditText mID, mPW;
     Button mBtnLogin, mBtnRegister;
+    int isLogin = 0;    //아이디가 있으면 1반환
+    private class RegisterTask extends AsyncTask<Call,Void,Integer> {
+        protected Integer doInBackground(Call... calls) {
+            try {
+                Call<Integer> call = calls[0];
+                Response<Integer> response=call.execute();
+                return response.body();
+
+            } catch (IOException e) {
+
+            }
+            return 0;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -35,35 +52,32 @@ public class LoginActivity extends Activity {
                 String userID = mID.getText().toString();
                 String userPW = mPW.getText().toString();
 
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try{
-                            JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("success");
-                            if(success){
-                                Toast.makeText(getApplicationContext(), "로그인에 성공했습니다.", Toast.LENGTH_SHORT).show();
+                User mUser = new User();
+                mUser.setId(userID);
+                mUser.setPassword(userPW);
+                Connection connection = new Connection();
+                UserAPI userAPI = connection.getRetrofit().create(UserAPI.class);
+                Call<Integer> call = userAPI.register(mUser);        //내가 집어넣을 정보
+               try{
+                    isLogin = new RegisterTask().execute(call).get();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                if(isLogin != 0){
+                    Toast.makeText(getApplicationContext(), "로그인에 성공했습니다.", Toast.LENGTH_SHORT).show();
 
-                                String userID = jsonResponse.getString("userID");
-                                String userPassword = jsonResponse.getString("userPassword");
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                // 로그인 하면서 사용자 정보 넘기기
-                                intent.putExtra("userID", userID);
-                                intent.putExtra("userPassword", userPassword);
-                                startActivity(intent);
-
-                            } else {
-                                Toast.makeText(getApplicationContext(), "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show();
-                                return;
-                            }
-                        } catch(Exception e){
-                            e.printStackTrace();
-                        }
-                    }
-                };
-                LoginRequest loginRequest = new LoginRequest(userID, userPW, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
-                queue.add(loginRequest);
+                    String userid = mUser.getId();
+                    String userPassword = mUser.getPassword();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    // 로그인 하면서 사용자 정보 넘기기
+                    intent.putExtra("userID", userid);
+                    intent.putExtra("userPassword", userPassword);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
         });
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
