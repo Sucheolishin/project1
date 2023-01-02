@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+<androidx.drawerlayout.widget.DrawerLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,9 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -327,6 +324,14 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/profileimg" />
 
+        <RelativeLayout
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="141dp"
+            android:layout_marginBottom="280dp"
+            android:visibility="visible" />
+
     </RelativeLayout>
 
     <!-- Android Large - 2 -->
@@ -499,6 +504,7 @@
             android:layout_marginLeft="230dp"
             android:layout_marginTop="25dp"
             android:background="@drawable/arrowp" />
+
 
     </RelativeLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
