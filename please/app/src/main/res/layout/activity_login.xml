@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/layout"
+    android:id="@+id/login"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:clipToOutline="true"
@@ -160,7 +160,9 @@
         android:inputType="text"
         android:maxLength="16"
         android:selectAllOnFocus="true"
-        android:textAppearance="@style/Id_Ex" />
+        android:textAppearance="@style/Id_Ex"
+        android:textColorHint="#808080"
+        android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/pass_Ex"
@@ -178,7 +180,8 @@
         android:maxLength="16"
         android:selectAllOnFocus="true"
         android:textAppearance="@style/Id_Ex"
-        android:fontFamily="@font/inter"
+        android:textColorHint="#808080"
+        android:textColor="@color/black"
         android:lineHeight="15sp"/>
 
     <ImageView

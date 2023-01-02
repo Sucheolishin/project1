@@ -3,7 +3,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/some_id"
+    android:id="@+id/signup"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:clipToOutline="true"
@@ -111,9 +111,11 @@
         android:background="@null"
         android:gravity="center_vertical"
         android:hint="Input ID"
+        android:textColor="@color/black"
         android:inputType="text"
         android:maxLength="16"
         android:selectAllOnFocus="true"
+        android:textColorHint="#808080"
         android:textAppearance="@style/Id_Ex" />
 
     <EditText
@@ -128,6 +130,8 @@
         android:background="@null"
         android:gravity="center_vertical"
         android:hint="Input PW"
+        android:textColor="@color/black"
+        android:textColorHint="#808080"
         android:inputType="textPassword"
         android:maxLength="16"
         android:selectAllOnFocus="true"
@@ -194,6 +198,8 @@
         android:background="@null"
         android:gravity="center_vertical"
         android:hint="Input PW_check"
+        android:textColor="@color/black"
+        android:textColorHint="#808080"
         android:inputType="textPassword"
         android:maxLength="16"
         android:selectAllOnFocus="true"
@@ -234,6 +240,8 @@
         android:background="@null"
         android:gravity="center_vertical"
         android:hint="Input NickName"
+        android:textColorHint="#808080"
+        android:textColor="@color/black"
         android:inputType="text"
         android:maxLength="16"
         android:selectAllOnFocus="true"

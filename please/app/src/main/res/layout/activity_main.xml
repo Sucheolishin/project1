@@ -1,324 +1,505 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Android Large - 1 -->
-<RelativeLayout
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawerLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/android_lar"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:clipToOutline="true"
-    android:background="@drawable/layouts"
-    >
-    <!-- explainRect -->
-    <View
-        android:id="@+id/explainrect"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
-        android:background="@drawable/explainrect" />
-    <!-- mainRect -->
-    <View
-        android:id="@+id/mainrect"
-        android:layout_width="match_parent"
-        android:layout_height="96dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="0dp"
-        android:background="@drawable/mainrect" />
-    <!-- taskRect -->
-    <View
-        android:id="@+id/taskrect"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="96dp"
-        android:background="@drawable/taskrect" />
-    <!-- mainPage -->
-    <TextView
-        android:id="@+id/mainpage"
-        android:layout_width="match_parent"
-        android:layout_height="29dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="29dp"
-        android:fontFamily="@font/inter"
-        android:gravity="center_vertical"
-        android:text="메인 페이지"
-        android:textAppearance="@style/mainpage"
-        android:textStyle="bold" />
-    <!-- Line -->
-    <View
-        android:id="@+id/line"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="96dp"
-        android:background="@drawable/line" />
-
-    <RadioGroup
-        android:id="@+id/radio_group"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="96dp"
-        android:orientation="horizontal"
-        android:layout_marginRight="4dp"
-        android:layout_marginLeft="4dp">
-        <!-- task1Rect -->
-        <RadioButton
-            android:id="@+id/task1rect"
-            android:layout_width="55dp"
-            android:layout_height="35dp"
+        android:layout_height="match_parent"
+        android:clipToOutline="true"
+        android:background="@drawable/layouts"
+        >
+        <!-- explainRect -->
+        <View
+            android:id="@+id/explainrect"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/explainrect" />
+        <!-- mainRect -->
+        <View
+            android:id="@+id/mainrect"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:background="@drawable/selector_radio_button"
-            android:button="@null"
-            android:text="전체"
-            android:textAlignment="center"
-            android:textColor="@drawable/selector_radio_text"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            tools:ignore="TouchTargetSizeCheck"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/mainrect" />
+        <!-- taskRect -->
+        <View
+            android:id="@+id/taskrect"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="96dp"
+            android:background="@drawable/taskrect" />
+        <!-- mainPage -->
+        <TextView
+            android:id="@+id/mainpage"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="29dp"
+            android:fontFamily="@font/inter"
+            android:gravity="center_vertical"
+            android:text="메인 페이지"
+            android:textAppearance="@style/mainpage"
+            android:textStyle="bold" />
+        <!-- Line -->
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="96dp"
+            android:background="@drawable/line" />
 
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="96dp"
+            android:orientation="horizontal"
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="4dp">
+            <!-- task1Rect -->
+            <RadioButton
+                android:id="@+id/task1rect"
+                android:layout_width="55dp"
+                android:layout_height="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/selector_radio_button"
+                android:button="@null"
+                android:text="전체"
+                android:textAlignment="center"
+                android:textColor="@drawable/selector_radio_text"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                tools:ignore="TouchTargetSizeCheck"
+
+                />
+            <!-- task2Rect -->
+            <RadioButton
+                android:id="@+id/task2rect"
+                android:layout_width="55dp"
+                android:layout_height="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/selector_radio_button"
+                android:button="@null"
+                android:text="식당"
+                android:textAlignment="center"
+                android:textColor="@drawable/selector_radio_text"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                tools:ignore="TouchTargetSizeCheck" />
+            <!-- task3Rect -->
+            <RadioButton
+                android:id="@+id/task3rect"
+                android:layout_width="55dp"
+                android:layout_height="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/selector_radio_button"
+                android:button="@null"
+                android:text="카페"
+                android:textAlignment="center"
+                android:textColor="@drawable/selector_radio_text"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                tools:ignore="TouchTargetSizeCheck" />
+            <!-- task4Rect -->
+            <RadioButton
+                android:id="@+id/task4rect"
+                android:layout_width="55dp"
+                android:layout_height="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/selector_radio_button"
+                android:button="@null"
+                android:text="미용"
+                android:textAlignment="center"
+                android:textColor="@drawable/selector_radio_text"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                tools:ignore="TouchTargetSizeCheck" />
+            <!-- task5Rect -->
+            <RadioButton
+                android:id="@+id/task5rect"
+                android:layout_width="55dp"
+                android:layout_height="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/selector_radio_button"
+                android:button="@null"
+                android:text="놀이"
+                android:textAlignment="center"
+                android:textColor="@drawable/selector_radio_text"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                tools:ignore="TouchTargetSizeCheck" />
+            <!-- task6Rect -->
+            <RadioButton
+                android:id="@+id/task6rect"
+                android:layout_width="55dp"
+                android:layout_height="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/selector_radio_button"
+                android:button="@null"
+                android:text="기타"
+                android:textAlignment="center"
+                android:textColor="@drawable/selector_radio_text"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                tools:ignore="TouchTargetSizeCheck" />
+        </RadioGroup>
+        <!-- shops -->
+        <View
+            android:id="@+id/shops"
+            android:layout_width="match_parent"
+            android:layout_height="116dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="151dp"
+            android:background="@drawable/shops" />
+        <!-- shopName -->
+        <TextView
+            android:id="@+id/shopname"
+            android:layout_width="300dp"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="22dp"
+            android:layout_marginBottom="241dp"
+            android:text="미식반점"
+            android:textStyle="bold"
+            android:textAppearance="@style/shopname" />
+        <!-- opentime -->
+        <TextView
+            android:id="@+id/opentime"
+            android:layout_width="300dp"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="22dp"
+            android:layout_marginBottom="220dp"
+            android:text="영업 시간: 9:00AM ~ 11:00PM"
+            android:textAppearance="@style/shopname"
+            android:textStyle="bold" />
+        <!-- shopExplain -->
+        <TextView
+            android:id="@+id/shopexplain"
+            android:layout_width="260dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="22dp"
+            android:layout_marginBottom="156dp"
+            android:text="해당 가게는 이러이러한 이러이러해서 이러이러해요 이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러"
+            android:textAppearance="@style/shopname" />
+
+        <!-- shopImage -->
+        <View
+            android:id="@+id/shopimage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="151dp"
+            android:background="@drawable/shopimage"
             />
-        <!-- task2Rect -->
-        <RadioButton
-            android:id="@+id/task2rect"
-            android:layout_width="55dp"
-            android:layout_height="35dp"
+        <!-- shopImagerect -->
+        <View
+            android:id="@+id/shopimagerect"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="151dp"
+            android:background="@drawable/shopimagerect"
+            />
+        <!-- profilename -->
+        <TextView
+            android:id="@+id/profilename"
+            android:layout_width="250dp"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="118dp"
+            android:text="신수철"
+            android:textAppearance="@style/shopname"
+            android:textStyle="bold" />
+
+        <!-- reviews -->
+        <TextView
+            android:id="@+id/reviews"
+            android:layout_width="250dp"
+            android:layout_height="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="95dp"
+            android:text="리뷰 3개"
+            android:textAppearance="@style/reviews"
+            android:textStyle="bold" />
+
+        <!-- explain -->
+        <TextView
+            android:id="@+id/explain"
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="6dp"
+            android:text="이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / "
+            android:textAppearance="@style/shopname"
+            android:textStyle="bold" />
+        <!-- friendRegister -->
+        <Button
+            android:id="@+id/friendregis"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="98dp"
+            android:background="@drawable/friendregis"
+            app:iconTint="@color/design_default_color_error" />
+        <!-- profileImage -->
+        <Button
+            android:id="@+id/profileimag"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="false"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:background="@drawable/selector_radio_button"
-            android:button="@null"
-            android:text="식당"
-            android:textAlignment="center"
-            android:textColor="@drawable/selector_radio_text"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            tools:ignore="TouchTargetSizeCheck" />
-        <!-- task3Rect -->
-        <RadioButton
-            android:id="@+id/task3rect"
-            android:layout_width="55dp"
-            android:layout_height="35dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:background="@drawable/selector_radio_button"
-            android:button="@null"
-            android:text="카페"
-            android:textAlignment="center"
-            android:textColor="@drawable/selector_radio_text"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            tools:ignore="TouchTargetSizeCheck" />
-        <!-- task4Rect -->
-        <RadioButton
-            android:id="@+id/task4rect"
-            android:layout_width="55dp"
-            android:layout_height="35dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:background="@drawable/selector_radio_button"
-            android:button="@null"
-            android:text="미용"
-            android:textAlignment="center"
-            android:textColor="@drawable/selector_radio_text"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            tools:ignore="TouchTargetSizeCheck" />
-        <!-- task5Rect -->
-        <RadioButton
-            android:id="@+id/task5rect"
-            android:layout_width="55dp"
-            android:layout_height="35dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:background="@drawable/selector_radio_button"
-            android:button="@null"
-            android:text="놀이"
-            android:textAlignment="center"
-            android:textColor="@drawable/selector_radio_text"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            tools:ignore="TouchTargetSizeCheck" />
-        <!-- task6Rect -->
-        <RadioButton
-            android:id="@+id/task6rect"
-            android:layout_width="55dp"
-            android:layout_height="35dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:background="@drawable/selector_radio_button"
-            android:button="@null"
-            android:text="기타"
-            android:textAlignment="center"
-            android:textColor="@drawable/selector_radio_text"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            tools:ignore="TouchTargetSizeCheck" />
-    </RadioGroup>
-    <!-- shops -->
-    <View
-        android:id="@+id/shops"
-        android:layout_width="match_parent"
-        android:layout_height="116dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="151dp"
-        android:background="@drawable/shops" />
-    <!-- shopName -->
-    <TextView
-        android:id="@+id/shopname"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="34dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/profileimg" />
+
+    </RelativeLayout>
+
+    <!-- Android Large - 2 -->
+    <RelativeLayout
+        android:id="@+id/drawer"
         android:layout_width="300dp"
-        android:layout_height="18dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="22dp"
-        android:layout_marginBottom="241dp"
-        android:text="미식반점"
-        android:textStyle="bold"
-        android:textAppearance="@style/shopname" />
-    <!-- opentime -->
-    <TextView
-        android:id="@+id/opentime"
-        android:layout_width="300dp"
-        android:layout_height="18dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="22dp"
-        android:layout_marginBottom="220dp"
-        android:text="영업 시간: 9:00AM ~ 11:00PM"
-        android:textAppearance="@style/shopname"
-        android:textStyle="bold" />
-    <!-- shopExplain -->
-    <TextView
-        android:id="@+id/shopexplain"
-        android:layout_width="260dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="22dp"
-        android:layout_marginBottom="156dp"
-        android:text="해당 가게는 이러이러한 이러이러해서 이러이러해요 이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러"
-        android:textAppearance="@style/shopname" />
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:background = "#ffffff"
+        android:layout_gravity = "right">
 
-    <!-- shopImage -->
-    <View
-        android:id="@+id/shopimage"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="151dp"
-        android:background="@drawable/shopimage"
-        />
-    <!-- shopImagerect -->
-    <View
-        android:id="@+id/shopimagerect"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="151dp"
-        android:background="@drawable/shopimagerect"
-        />
-    <!-- profilename -->
-    <TextView
-        android:id="@+id/profilename"
-        android:layout_width="250dp"
-        android:layout_height="18dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="118dp"
-        android:text="신수철"
-        android:textAppearance="@style/shopname"
-        android:textStyle="bold" />
 
-    <!-- reviews -->
-    <TextView
-        android:id="@+id/reviews"
-        android:layout_width="250dp"
-        android:layout_height="18dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="95dp"
-        android:text="리뷰 3개"
-        android:textAppearance="@style/reviews"
-        android:textStyle="bold" />
+        <!-- background -->
+        <View
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/background"
+            />
 
-    <!-- explain -->
-    <TextView
-        android:id="@+id/explain"
-        android:layout_width="match_parent"
-        android:layout_height="82dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="6dp"
-        android:text="이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / "
-        android:textAppearance="@style/shopname"
-        android:textStyle="bold" />
-    <!-- friendRegister -->
-    <Button
-        android:id="@+id/friendregis"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="98dp"
-        android:background="@drawable/friendregis"
-        app:iconTint="@color/design_default_color_error" />
-    <!-- profileImage -->
-    <Button
-        android:id="@+id/profileimag"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/profileimg" />
+        <!-- defaultlogin -->
+        <View
+            android:id="@+id/defaultlogi"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/defaultlogi" />
+        <!-- loginnotice -->
+        <Button
+            android:id="@+id/loginnotice"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="17dp"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:text="로그인 필요"
+            android:textAppearance="@style/loginnotice"
+            android:textStyle="bold"/>
+        <!-- list1 -->
+        <Button
+            android:id="@+id/list1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="96dp"
+            android:background="@drawable/list"
+            android:text="마이 페이지 "
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:gravity="right|center_vertical"
+            />
+        <!-- Line1 -->
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="156dp"
+            android:background="@drawable/line" />
+        <!-- list2 -->
+        <Button
+            android:id="@+id/list2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="158dp"
+            android:background="@drawable/list"
+            android:gravity="right|center_vertical"
+            android:text="알림 "
+            android:textColor="#000000"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+        <!-- Line -->
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="219dp"
+            android:background="@drawable/line" />
+        <!-- list3 -->
+        <Button
+            android:id="@+id/list3"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="221dp"
+            android:background="@drawable/list"
+            android:gravity="right|center_vertical"
+            android:text="작성한 리뷰 "
+            android:textColor="#000000"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+        <!-- Line3 -->
+        <View
+            android:id="@+id/line3"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="283dp"
+            android:background="@drawable/line" />
+        <!-- list4 -->
+        <Button
+            android:id="@+id/list4"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="285dp"
+            android:background="@drawable/list"
+            android:gravity="right|center_vertical"
+            android:text="관심 업체 "
+            android:textColor="#000000"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+        <!-- Line4 -->
+        <View
+            android:id="@+id/line4"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="347dp"
+            android:background="@drawable/line" />
+        <!-- list5 -->
+        <Button
+            android:id="@+id/list5"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="349dp"
+            android:background="@drawable/list"
+            android:gravity="left|center_vertical"
+            android:text="  닫기"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <!-- Line5 -->
+        <View
+            android:id="@+id/line5"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="381dp"
+            android:background="@drawable/line" />
+        <!-- arrow -->
+        <View
+            android:id="@+id/rectangle_1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="230dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/arrowp" />
 
-</RelativeLayout>
+    </RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
+<!-- Android Large - 1 -->
