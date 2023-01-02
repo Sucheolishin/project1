@@ -75,17 +75,18 @@ public class RegisterActivity extends Activity {
                 
                 Connection connection = new Connection();
                 UserAPI userAPI = connection.getRetrofit().create(UserAPI.class);
-                Call<Integer> call = userAPI.signUp(mUser);
-                try{
-                    isIn = new RegisterTask().execute(call).get();
+                Call<Integer>check = userAPI.register(mUser);
+                /*try{
+                    isIn = new RegisterTask().execute(check).get();
                 }catch(Exception e){
                     e.printStackTrace();
-                }
+                }*/
                 if(isIn != 0){
                     Toast.makeText(getApplicationContext(), "회원가입에 실패했습니다. 다시 한 번 확인해 주세요.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 else{
+                    Call<Integer> call = userAPI.insertUser(mUser);
                     Toast.makeText(getApplicationContext(), "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class );

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- drawable/shops.xml -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="340dp"
+    android:height="116dp"
+    android:viewportWidth="340"
+    android:viewportHeight="116"
+    >
+
+    <group>
+
+        <clip-path
+            android:pathData="M5 0H335C337.761 0 340 2.23858 340 5V111C340 113.761 337.761 116 335 116H5C2.23858 116 0 113.761 0 111V5C0 2.23858 2.23858 0 5 0Z"
+            />
+
+        <path
+            android:pathData="M0 0V116H340V0"
+            android:fillColor="#FFE4E1"
+            />
+
+        <path
+            android:pathData="M5 0H335C337.761 0 340 2.23858 340 5V111C340 113.761 337.761 116 335 116H5C2.23858 116 0 113.761 0 111V5C0 2.23858 2.23858 0 5 0Z"
+            android:strokeWidth="3"
+            android:strokeColor="#B7B7B7"
+            />
+
+    </group>
+
+</vector>

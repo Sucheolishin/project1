@@ -41,7 +41,9 @@
         android:gravity="center_horizontal|center_vertical"
         android:text="비밀번호"
         android:textAppearance="@style/IDst"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="@font/inter"
+        android:lineHeight="15sp"/>
 
     <TextView
         android:id="@+id/ID"
@@ -54,7 +56,9 @@
         android:gravity="center_horizontal|center_vertical"
         android:text="아이디"
         android:textAppearance="@style/IDst"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="@font/inter"
+        android:lineHeight="15sp"/>
 
     <TextView
         android:id="@+id/Name"
@@ -66,7 +70,9 @@
         android:gravity="center_horizontal|center_vertical"
         android:text="세종대학교 제휴업체 지도"
         android:textAppearance="@style/Nst"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="@font/inter"
+        android:lineHeight="15sp"/>
 
     <!-- 회원가입 -->
 
@@ -84,7 +90,9 @@
         android:text="회원가입"
         android:textAppearance="@style/Rest"
         android:textColor="#000000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="@font/inter"
+        android:lineHeight="15sp"/>
 
     <View
         android:id="@+id/login_Rec"
@@ -133,7 +141,9 @@
         android:gravity="center_horizontal|center_vertical"
         android:text="로그인"
         android:textAppearance="@style/login_Tx"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="@font/inter"
+        android:lineHeight="15sp"/>
 
     <EditText
         android:id="@+id/Id_Ex"
@@ -167,7 +177,9 @@
         android:inputType="textPassword"
         android:maxLength="16"
         android:selectAllOnFocus="true"
-        android:textAppearance="@style/Id_Ex" />
+        android:textAppearance="@style/Id_Ex"
+        android:fontFamily="@font/inter"
+        android:lineHeight="15sp"/>
 
     <ImageView
         android:id="@+id/login_logo"
