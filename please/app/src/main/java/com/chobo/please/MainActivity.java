@@ -14,9 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioGroup;
-
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
+import android.widget.RelativeLayout;
 
 import net.daum.mf.map.api.MapView;
 
@@ -27,12 +25,14 @@ public class MainActivity extends AppCompatActivity {
     Button loginbtn;
     RadioGroup radioGroup;
     MapView mapView;
+    RelativeLayout bottombar;
+    Button uparr;
+    Button downarr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mapView= new MapView(this);
-
         ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
 
@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         Button closebtn = findViewById(R.id.list5);
         loginbtn = findViewById(R.id.loginnotice);
         radioGroup = findViewById(R.id.radio_group);
+        downarr = findViewById(R.id.darrow);
+        uparr = findViewById(R.id.uarrow);
+        bottombar = findViewById(R.id.bottom);
+
         radioGroup.check(R.id.task1rect);
 
         openbtn.setOnClickListener(new View.OnClickListener() {
@@ -84,8 +88,24 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        downarr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottombar.setVisibility(View.GONE);
+                downarr.setVisibility(View.GONE);
+                uparr.setVisibility(View.VISIBLE);
+            }
+        });
+        uparr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                uparr.setVisibility(View.GONE);
+                downarr.setVisibility(View.VISIBLE);
+                bottombar.setVisibility(View.VISIBLE);
+            }
+        });
     }
-    private void getHashKey(){
+ /*   private void getHashKey(){
         PackageInfo packageInfo = null;
         try {
             packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
@@ -104,5 +124,5 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("KeyHash", "Unable to get MessageDigest. signature=" + signature, e);
             }
         }
-    }
+    }*/
 }
