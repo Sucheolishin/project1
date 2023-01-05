@@ -6,13 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class User {
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getId() {
         return id;
@@ -30,5 +23,5 @@ public class User {
         this.password = password;
     }
 
-    private String id, password, name;
+    private String id, password;
 }

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!-- 알림 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/notice"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/layout"
+    android:clipToOutline="true"
+    android:textAlignment="center">
+    <!-- upper_bar -->
+    <View
+        android:id="@+id/upper_bar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/upper_bar" />
+    <!-- upper_text -->
+    <TextView
+        android:id="@+id/upper_text"
+        android:layout_width="75dp"
+        android:layout_height="29dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="알림"
+        android:textAppearance="@style/mainpage" />
+    <!-- ntask1 -->
+    <View
+        android:id="@+id/ntask1"
+        android:layout_width="0dp"
+        android:layout_height="71dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/tasks"
+        />
+
+<RelativeLayout
+    android:id = "@+id/mylist"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- ntask1name -->
+    <TextView
+        android:id="@+id/ntask1name"
+        android:layout_width="92dp"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="58dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="씨홍스"
+        android:textAppearance="@style/ntask1name"
+        android:textStyle="bold" />
+
+    <!-- ntask1date -->
+    <TextView
+        android:id="@+id/ntask1date"
+        android:layout_width="85dp"
+        android:layout_height="28dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="56dp"
+        android:gravity="center_vertical"
+        android:text="2023-01-01"
+        android:textAppearance="@style/ntask1date"
+        android:textStyle="bold"/>
+    <!-- ntask1con -->
+    <TextView
+        android:id="@+id/ntask1con"
+        android:layout_width="352dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="12dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="91dp"
+        android:text="내 관심 업체에 새로운 리뷰가 작성되었어요!"
+        android:textAppearance="@style/ntask1con"
+        android:gravity="center_vertical"
+        android:textStyle="bold" />
+</RelativeLayout>
+<!--
+    &lt;!&ndash; ntask2 &ndash;&gt;
+    <View
+        android:id="@+id/ntask2"
+        android:layout_width="0dp"
+        android:layout_height="71dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="119dp"
+        android:background="@drawable/tasks"
+        />
+
+    &lt;!&ndash; ntask2name &ndash;&gt;
+    <TextView
+        android:id="@+id/ntask2name"
+        android:layout_width="92dp"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="129dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="씨홍스"
+        android:textAppearance="@style/ntask1name"
+        android:textStyle="bold" />
+
+    &lt;!&ndash; ntask2date &ndash;&gt;
+    <TextView
+        android:id="@+id/ntask2date"
+        android:layout_width="85dp"
+        android:layout_height="28dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="127dp"
+        android:gravity="center_vertical"
+        android:text="2023-01-01"
+        android:textAppearance="@style/ntask1date"
+        android:textStyle="bold"/>
+    &lt;!&ndash; ntask2con &ndash;&gt;
+    <TextView
+        android:id="@+id/ntask2con"
+        android:layout_width="352dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="12dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="162dp"
+        android:text="내 관심 업체에 새로운 리뷰가 작성되었어요!"
+        android:textAppearance="@style/ntask1con"
+        android:gravity="center_vertical"
+        android:textStyle="bold" />
+    &lt;!&ndash; ntask3 &ndash;&gt;
+    <View
+        android:id="@+id/ntask3"
+        android:layout_width="0dp"
+        android:layout_height="71dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="198dp"
+        android:background="@drawable/tasks"
+        />
+
+    &lt;!&ndash; ntask3name &ndash;&gt;
+    <TextView
+        android:id="@+id/ntask3name"
+        android:layout_width="92dp"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="203dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="씨홍스"
+        android:textAppearance="@style/ntask1name"
+        android:textStyle="bold" />
+
+    &lt;!&ndash; ntask3date &ndash;&gt;
+    <TextView
+        android:id="@+id/ntask3date"
+        android:layout_width="85dp"
+        android:layout_height="28dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="202dp"
+        android:gravity="center_vertical"
+        android:text="2023-01-01"
+        android:textAppearance="@style/ntask1date"
+        android:textStyle="bold"/>
+    &lt;!&ndash; ntask3con &ndash;&gt;
+    <TextView
+        android:id="@+id/ntask3con"
+        android:layout_width="352dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="12dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="237dp"
+        android:text="내 관심 업체에 새로운 리뷰가 작성되었어요!"
+        android:textAppearance="@style/ntask1con"
+        android:gravity="center_vertical"
+        android:textStyle="bold" />-->
+
+</RelativeLayout>

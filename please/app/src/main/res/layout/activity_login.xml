@@ -186,10 +186,11 @@
 
     <ImageView
         android:id="@+id/login_logo"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="75dp"
-        app:srcCompat="@drawable/login_logo" />
+        android:background="@drawable/login_logo" />
 
 
 </RelativeLayout>

@@ -19,18 +19,18 @@ import retrofit2.Response;
 public class LoginActivity extends Activity {
     EditText mID, mPW;
     Button mBtnLogin, mBtnRegister;
-    int isLogin = 0;    //아이디가 있으면 1반환
-    private class RegisterTask extends AsyncTask<Call,Void,Integer> {
-        protected Integer doInBackground(Call... calls) {
+    boolean isLogin = false;    //아이디가 있으면 1반환
+    private class RegisterTask extends AsyncTask<Call,Void, Boolean> {
+        protected Boolean doInBackground(Call... calls) {
             try {
-                Call<Integer> call = calls[0];
-                Response<Integer> response=call.execute();
+                Call<Boolean> call = calls[0];
+                Response<Boolean> response=call.execute();
                 return response.body();
 
             } catch (IOException e) {
 
             }
-            return 0;
+            return false;
         }
     }
 
@@ -57,13 +57,13 @@ public class LoginActivity extends Activity {
                 mUser.setPassword(userPW);
                 Connection connection = new Connection();
                 UserAPI userAPI = connection.getRetrofit().create(UserAPI.class);
-                Call<Integer> call = userAPI.register(mUser);        //내가 집어넣을 정보
+                Call<Boolean> call = userAPI.register(mUser);        //내가 집어넣을 정보
                try{
                     isLogin = new RegisterTask().execute(call).get();
                 }catch(Exception e){
                     e.printStackTrace();
                 }
-                if(isLogin != 0){
+                if(isLogin){
                     Toast.makeText(getApplicationContext(), "로그인에 성공했습니다.", Toast.LENGTH_SHORT).show();
 
                     String userid = mUser.getId();

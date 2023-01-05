@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- drawable/ntask1.xml -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="364dp"
+    android:height="75dp"
+    android:viewportWidth="364"
+    android:viewportHeight="75"
+    >
+
+    <group>
+
+        <clip-path
+            android:pathData="M2 2H362V73H2V2Z"
+            />
+
+        <path
+            android:pathData="M2 2V73H362V2"
+            android:fillColor="#FFFFFF"
+            />
+
+    </group>
+
+    <group>
+
+        <clip-path
+            android:pathData="M0 0V75H364V0M2 2H362V73H2V2Z"
+            />
+
+        <path
+            android:pathData="M2 2H362V73H2V2Z"
+            android:strokeWidth="4"
+            android:strokeColor="#D5D6D2"
+            />
+
+    </group>
+
+</vector>
