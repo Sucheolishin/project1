@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 마이페이지 -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/my_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToOutline="true"
+    android:background="@drawable/layout">
+    <!-- upper_bar -->
+    <View
+        android:id="@+id/upper_bar1"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/upper_bar" />
+    <!-- upper_text -->
+    <TextView
+        android:id="@+id/upper_text1"
+        android:layout_width="match_parent"
+        android:layout_height="29dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:gravity="center|left"
+        android:text="마이페이지"
+        android:textAppearance="@style/mainpage"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/id_view"
+        android:layout_width="92dp"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="66dp"
+        android:gravity="left"
+        android:text="ID:"
+        android:textAppearance="@style/ntask1name" />
+
+    <TextView
+        android:id="@+id/id_text"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="66dp"
+        android:gravity="left"
+        android:text="아이디 예시"
+        android:textAppearance="@style/gray_name" />
+
+    <TextView
+        android:id="@+id/name_view"
+        android:layout_width="92dp"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="110dp"
+        android:gravity="left"
+        android:text="이름:"
+        android:textAppearance="@style/ntask1name" />
+
+
+    <TextView
+        android:id="@+id/name_text"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="110dp"
+        android:gravity="left"
+        android:text="이름 예시"
+        android:textAppearance="@style/gray_name" />
+</RelativeLayout>

@@ -326,7 +326,6 @@
                 android:layout_height="18dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
-                android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginBottom="95dp"
                 android:text="리뷰 3개"

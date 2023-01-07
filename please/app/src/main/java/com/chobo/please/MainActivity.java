@@ -4,39 +4,36 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import net.daum.mf.map.api.MapView;
 
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 import retrofit2.Call;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    Button loginbtn;
-    RadioGroup radioGroup;
+    Button login_btn;
+    RadioGroup radio_group;
     MapView mapView;
-    RelativeLayout bottombar;
-    Button uparr;
-    Button downarr;
+    RelativeLayout bottom_bar;
+    Button up_arr;
+    Button down_arr;
     String userName;
     Boolean isLog = false;
-
-    User user;
+    Button my_page;
+    Button notice;
+    Button review;
+    Button pick;
+    User user = new User();
 
     private class RegisterTask extends AsyncTask<Call,Void, String> {
         protected String doInBackground(Call... calls) {
@@ -44,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
                 Call<String> call = calls[0];
                 Response<String> response=call.execute();
                 return response.body();
-
             } catch (IOException e) {
 
             }
@@ -56,125 +52,146 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*user.setId(savedInstanceState.getString("userID","0"));
-        user.setPassword(savedInstanceState.getString("userPassword","0"));
-*/
-        /*if(!(user.getId().equals("0") && user.getPassword().equals("0"))){
-           isLog = true;
-        }
-        else{
-            isLog = false;
-        }
-        if(isLog){
-            try{
-                Connection connection = new Connection();
-                UserAPI userAPI = connection.getRetrofit().create(UserAPI.class);
-                Call<String> call = userAPI.names(user);
-                userName = new MainActivity.RegisterTask().execute(call).get();
-            }catch(Exception e){
+        login_btn = findViewById(R.id.loginnotice);
+        radio_group = findViewById(R.id.radio_group);
+        radio_group.check(R.id.task1rect);
+        down_arr = findViewById(R.id.darrow);
+        up_arr = findViewById(R.id.uarrow);
+        bottom_bar = findViewById(R.id.bottom);
+        my_page = findViewById(R.id.list1);
+        notice = findViewById(R.id.list2);
+        review = findViewById(R.id.list3);
+        pick = findViewById(R.id.list4);
 
+
+        getIntent().putExtra("userID","tncjf789");      //임시
+        getIntent().putExtra("userPassword","123456");  //임시
+
+         if(getIntent().hasExtra("userID") && getIntent().hasExtra("userPassword") ){
+            user.setId(getIntent().getStringExtra("userID"));
+            user.setPassword(getIntent().getStringExtra("userPassword"));
+            isLog = true;
+           if(isLog){
+               //통신해서 이름 불러오는 곳
+                /*try{
+                    Connection connection = new Connection();
+                    UserAPI userAPI = connection.getRetrofit().create(UserAPI.class);
+                    Call<String> call = userAPI.names(user);
+                    userName = new MainActivity.RegisterTask().execute(call).get();
+                }catch(Exception e){
+
+                }*/
+               userName = "tncjf";  //임시
+               login_btn.setTextSize(25);
+               login_btn.setText(userName);
             }
-            loginbtn.setText(userName);
+            else{
+                login_btn.setText("로그인 필요");
+            }
         }
-        else{
-            loginbtn.setText("로그인 필요");
-        }*/
+        /*메인코드에서 지도 연동하는 부분*/
         mapView= new MapView(this);
         ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
 
         final DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-
         final View drawerView = (View) findViewById(R.id.drawer);
 
-        Button openbtn = findViewById(R.id.profileimag);
-        Button closebtn = findViewById(R.id.list5);
+        Button open_btn = findViewById(R.id.profileimag);
+        Button close_btn = findViewById(R.id.list5);
 
-        loginbtn = findViewById(R.id.loginnotice);
-        radioGroup = findViewById(R.id.radio_group);
-        downarr = findViewById(R.id.darrow);
-        uparr = findViewById(R.id.uarrow);
-        bottombar = findViewById(R.id.bottom);
-        radioGroup.check(R.id.task1rect);
-
-        openbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawerLayout.openDrawer(drawerView);
+        //로그인 이벤트
+        login_btn.setOnClickListener(view -> {
+            Intent intent;
+            if(!isLog){
+                intent = new Intent(MainActivity.this, LoginActivity.class);
             }
-        });
-
-        closebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawerLayout.closeDrawer(drawerView);
+            else{
+                intent = new Intent(MainActivity.this, PageActivity.class);
+                intent.putExtra("userID",user.getId());
+                intent.putExtra("userName", userName);
             }
+            startActivity(intent);
         });
 
-        loginbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!isLog){
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                }
+        //라디오 버튼 선택
+        radio_group.setOnCheckedChangeListener((radioGroup, checkedId) -> {
+            switch (checkedId){
+                case R.id.task1rect:
+                    break;
+                case R.id.task2rect:
+                    break;
+                case R.id.task3rect:
+                    break;
+                case R.id.task4rect:
+                    break;
+                case R.id.task5rect:
+                    break;
+                case R.id.task6rect:
+                    break;
             }
         });
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                switch (checkedId){
-                    case R.id.task1rect:
-                        break;
-                    case R.id.task2rect:
-                        break;
-                    case R.id.task3rect:
-                        break;
-                    case R.id.task4rect:
-                        break;
-                    case R.id.task5rect:
-                        break;
-                    case R.id.task6rect:
-                        break;
-                }
-            }
+        //하단 바 감추기 or 보이기
+        down_arr.setOnClickListener(view -> {
+            bottom_bar.setVisibility(View.GONE);
+            down_arr.setVisibility(View.GONE);
+            up_arr.setVisibility(View.VISIBLE);
         });
-        downarr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottombar.setVisibility(View.GONE);
-                downarr.setVisibility(View.GONE);
-                uparr.setVisibility(View.VISIBLE);
-            }
+        up_arr.setOnClickListener(view -> {
+            up_arr.setVisibility(View.GONE);
+            down_arr.setVisibility(View.VISIBLE);
+            bottom_bar.setVisibility(View.VISIBLE);
         });
-        uparr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                uparr.setVisibility(View.GONE);
-                downarr.setVisibility(View.VISIBLE);
-                bottombar.setVisibility(View.VISIBLE);
-            }
+        //옆 드로어 열기
+        open_btn.setOnClickListener(view -> drawerLayout.openDrawer(drawerView));
+        close_btn.setOnClickListener(view -> drawerLayout.closeDrawer(drawerView));
+
+       my_page.setOnClickListener(view -> {
+           if(isLog){
+               Intent intent = new Intent(MainActivity.this, PageActivity.class);
+               intent.putExtra("userID",user.getId());
+               intent.putExtra("userName", userName);
+               startActivity(intent);
+           }
+           else{
+               Toast.makeText(getApplicationContext(), "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
+               return;
+           }
+          
         });
+
+       notice.setOnClickListener(view ->{
+           if(isLog){
+               Intent intent = new Intent(MainActivity.this, NoticeActivity.class);
+               startActivity(intent);
+           }
+           else{
+               Toast.makeText(getApplicationContext(), "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
+               return;
+           }
+       });
+
+       review.setOnClickListener(view ->{
+            if(isLog){
+                Intent intent = new Intent(MainActivity.this, ReviewActivity.class);
+                startActivity(intent);
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+       });
+
+       pick.setOnClickListener(view ->{
+            if(isLog){
+                Intent intent = new Intent(MainActivity.this, PickActivity.class);
+                startActivity(intent);
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+       });
     }
- /*   private void getHashKey(){
-        PackageInfo packageInfo = null;
-        try {
-            packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        if (packageInfo == null)
-            Log.e("KeyHash", "KeyHash:null");
-
-        for (Signature signature : packageInfo.signatures) {
-            try {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.d("KeyHash", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            } catch (NoSuchAlgorithmException e) {
-                Log.e("KeyHash", "Unable to get MessageDigest. signature=" + signature, e);
-            }
-        }
-    }*/
 }
