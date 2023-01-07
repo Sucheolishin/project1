@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/notice_list"
+    android:layout_width="match_parent"
+    android:layout_height="71dp"
+    android:visibility="visible"
+    android:background="@drawable/tasks">
+    <!-- ntask1name -->
+
+    <Button
+        android:id="@+id/ntask"
+        android:layout_width="0dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/tasks" />
+
+    <TextView
+        android:id="@+id/ntask1name"
+        android:layout_width="92dp"
+        android:layout_height="33dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="4dp"
+        android:gravity="left"
+        android:text="가게명"
+        android:textAppearance="@style/ntask1name"
+        android:textStyle="bold" />
+
+    <!-- ntask1date -->
+    <TextView
+        android:id="@+id/ntask1date"
+        android:layout_width="85dp"
+        android:layout_height="28dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:text="2023-01-01"
+        android:textAppearance="@style/ntask1date"
+        android:textStyle="bold" />
+    <!-- ntask1con -->
+    <TextView
+        android:id="@+id/ntask1con"
+        android:layout_width="352dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="36dp"
+        android:gravity="center_vertical"
+        android:text="내 관심 업체에 새로운 리뷰가 작성되었어요!"
+        android:textAppearance="@style/ntask1con"
+        android:textStyle="bold" />
+</RelativeLayout>

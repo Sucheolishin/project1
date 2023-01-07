@@ -2,6 +2,8 @@ package com.chobo.please;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 import net.daum.mf.map.api.MapView;
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -33,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
     Button notice;
     Button review;
     Button pick;
+
+    //리뷰 넘기기 변수
+    private ViewPager2 mPager;
+    private FragmentStateAdapter pagerAdapter;
+    private int num_page = 5;       //개수 통신을 통해 변경
+
     User user = new User();
 
     private class RegisterTask extends AsyncTask<Call,Void, String> {
@@ -52,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //버튼들 동기화
         login_btn = findViewById(R.id.loginnotice);
         radio_group = findViewById(R.id.radio_group);
         radio_group.check(R.id.task1rect);
@@ -63,10 +73,34 @@ public class MainActivity extends AppCompatActivity {
         review = findViewById(R.id.list3);
         pick = findViewById(R.id.list4);
 
+        //뷰페이저 연결
+        mPager = findViewById(R.id.viewpager);
+        pagerAdapter = new MyAdapter(this, num_page);
+        mPager.setAdapter(pagerAdapter);
+
+        mPager.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
+
+        mPager.setCurrentItem(1000);        //천장정도의 이미지를 생성하여 사실상 무한으로 만들기
+        mPager.setOffscreenPageLimit(5);        //최대 리뷰 개수(해당도 통신을 통해 변경)
+
+        mPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+                if(positionOffsetPixels == 0){
+                    mPager.setCurrentItem(position);
+                }
+            }
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+            }
+        });
+
 
         getIntent().putExtra("userID","tncjf789");      //임시
         getIntent().putExtra("userPassword","123456");  //임시
-
+        //통신해서 로그인 되었는지 확인
          if(getIntent().hasExtra("userID") && getIntent().hasExtra("userPassword") ){
             user.setId(getIntent().getStringExtra("userID"));
             user.setPassword(getIntent().getStringExtra("userPassword"));
@@ -89,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
                 login_btn.setText("로그인 필요");
             }
         }
+
         /*메인코드에서 지도 연동하는 부분*/
         mapView= new MapView(this);
         ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.map_view);

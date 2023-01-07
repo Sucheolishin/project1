@@ -212,7 +212,6 @@
         </RadioGroup>
 
 
-
         <RelativeLayout
             android:id="@+id/bottom"
             android:layout_width="match_parent"
@@ -305,59 +304,23 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="151dp"
                 android:background="@drawable/shopimagerect" />
-            <!-- profilename -->
-            <TextView
-                android:id="@+id/profilename"
-                android:layout_width="250dp"
-                android:layout_height="18dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentBottom="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="118dp"
-                android:text="신수철"
-                android:textAppearance="@style/shopname"
-                android:textStyle="bold" />
 
-            <!-- reviews -->
-            <TextView
-                android:id="@+id/reviews"
-                android:layout_width="250dp"
-                android:layout_height="18dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="95dp"
-                android:text="리뷰 3개"
-                android:textAppearance="@style/reviews"
-                android:textStyle="bold" />
-
-            <!-- explain -->
-            <TextView
-                android:id="@+id/explain"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="82dp"
-                android:layout_alignParentLeft="true"
+                android:layout_height="140dp"
                 android:layout_alignParentBottom="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="6dp"
-                android:text="이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / 이런리뷰, 저런리뷰 / "
-                android:textAppearance="@style/shopname"
-                android:textStyle="bold" />
-            <!-- friendRegister -->
-            <Button
-                android:id="@+id/friendregis"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="98dp"
-                android:background="@drawable/friendregis"
-                app:iconTint="@color/design_default_color_error" />
-            <!-- shopImage -->
+                android:layout_gravity="center">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:scaleType="fitXY" />
+            </FrameLayout>
+
         </RelativeLayout>
         <!-- profileImage -->
 
