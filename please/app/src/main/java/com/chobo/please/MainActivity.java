@@ -5,7 +5,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
 import java.io.IOException;
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     Button notice;
     Button review;
     Button pick;
+    Button logout;
 
     //리뷰 넘기기 변수
     private ViewPager2 mPager;
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         notice = findViewById(R.id.list2);
         review = findViewById(R.id.list3);
         pick = findViewById(R.id.list4);
+        logout = findViewById(R.id.list6);
 
         //뷰페이저 연결
         mPager = findViewById(R.id.viewpager);
@@ -123,10 +128,20 @@ public class MainActivity extends AppCompatActivity {
                 login_btn.setText("로그인 필요");
             }
         }
+         //로그아웃 버튼
+         if(isLog){
+             logout.setVisibility(View.VISIBLE);
+             findViewById(R.id.line6).setVisibility(View.VISIBLE);
+         }
+         else{
+             logout.setVisibility(View.GONE);
+             findViewById(R.id.line6).setVisibility(View.GONE);
+         }
 
         /*메인코드에서 지도 연동하는 부분*/
         mapView= new MapView(this);
         ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.map_view);
+        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord( 37.55028006471174,127.07462588183662), true);        // 중심점 변경
         mapViewContainer.addView(mapView);
 
         final DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -227,6 +242,19 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
                 return;
             }
+       });
+
+       logout.setOnClickListener(view->{
+           userName = null;
+           user.setId(null);
+           user.setPassword(null);
+           getIntent().removeExtra("userID");
+           getIntent().removeExtra("userPassword");
+           login_btn.setTextSize(40);
+           login_btn.setText("로그인 필요");
+           isLog = false;
+           logout.setVisibility(View.GONE);
+           findViewById(R.id.line6).setVisibility(View.GONE);
        });
     }
 }

@@ -19,11 +19,11 @@ public class Fragment_reviews extends Fragment {
     public Fragment_reviews(int index) {
         now_index = index;
 
-        nameList.add("씨홍스"); countList.add("리뷰 1개"); readList.add("너무 맛있어요 내스타일!");
-        nameList.add("미식반점"); countList.add("리뷰 1개"); readList.add("항상 여기서 사먹어요 ");
-        nameList.add("땅땅치킨"); countList.add("리뷰 2개"); readList.add("항상 여기서 사먹어요 !");
-        nameList.add("헬스짐"); countList.add("리뷰 1개"); readList.add("내 근육 생성소");
-        nameList.add("땅땅치킨"); countList.add("리뷰 1개"); readList.add("항상 여기서 사먹어요 !");
+        nameList.add("신수철"); countList.add("리뷰 3개"); readList.add("너무 맛있어요 내스타일!");
+        nameList.add("신수철"); countList.add("리뷰 3개"); readList.add("항상 여기서 사먹어요 ");
+        nameList.add("신수철"); countList.add("리뷰 3개"); readList.add("항상 여기서 사먹어요 !");
+        nameList.add("김예진"); countList.add("리뷰 2개"); readList.add("내 근육 생성소");
+        nameList.add("김예진"); countList.add("리뷰 2개"); readList.add("항상 여기서 사먹어요 !");
     }
 
     @Override
