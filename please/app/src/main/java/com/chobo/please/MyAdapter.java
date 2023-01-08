@@ -12,16 +12,12 @@ public class MyAdapter extends FragmentStateAdapter {
         super(fa);
         mCount = count;
     }
+
     @NonNull
     @Override
     public Fragment createFragment(int position) {
         int index = getRealPosition(position);
-
-        if(index==0) return new Fragment_reviews();
-        else if(index==1) return new Fragment_reviews();
-        else if(index==2) return new Fragment_reviews();
-        else if(index==3) return new Fragment_reviews();
-        else return new Fragment_reviews();
+        return new Fragment_reviews(index);
     }
 
     @Override
@@ -29,5 +25,4 @@ public class MyAdapter extends FragmentStateAdapter {
         return 2000;
     }
     public int getRealPosition(int position) { return position % mCount; }
-
 }

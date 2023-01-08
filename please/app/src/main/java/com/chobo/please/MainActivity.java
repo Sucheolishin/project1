@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         mPager.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
 
         mPager.setCurrentItem(1000);        //천장정도의 이미지를 생성하여 사실상 무한으로 만들기
-        mPager.setOffscreenPageLimit(5);        //최대 리뷰 개수(해당도 통신을 통해 변경)
+        mPager.setOffscreenPageLimit(num_page);        //최대 리뷰 개수(해당도 통신을 통해 변경)
 
         mPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
