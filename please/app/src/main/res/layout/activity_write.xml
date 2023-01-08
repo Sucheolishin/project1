@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 마이페이지 -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/write"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToOutline="true"
+    android:background="@drawable/layout">
+    <!-- upper_bar -->
+    <View
+        android:id="@+id/upper_bar4"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/upper_bar" />
+    <!-- upper_text -->
+    <TextView
+        android:id="@+id/upper_text4"
+        android:layout_width="match_parent"
+        android:layout_height="29dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:gravity="center|left"
+        android:text="리뷰 작성하기"
+        android:textAppearance="@style/mainpage"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/post_text"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="61dp"
+        android:gravity="left"
+        android:text="가게명"
+        android:textAppearance="@style/ntask1name"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/review_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="#FDF3F3"
+        android:gravity="top|left"
+        android:hint="리뷰를 작성해주세요."
+        android:inputType="text"
+        android:maxLength="16"
+        android:selectAllOnFocus="true"
+        android:textAppearance="@style/Id_Ex"
+        android:textColor="@color/black"
+        android:textColorHint="#808080" />
+
+    <Button
+        android:id="@+id/review_back"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="0dp"
+        android:background="#FFE4E1" />
+
+    <View
+        android:id="@+id/review_write"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/reviews"
+        android:translationZ="2dp" />
+
+
+</RelativeLayout>

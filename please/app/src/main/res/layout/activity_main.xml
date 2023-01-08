@@ -13,9 +13,7 @@
         android:clipToOutline="true"
         android:background="@drawable/layouts"
         >
-        <!-- explainRect -->
-        <!-- mainRect -->
-        <!-- taskRect -->
+
         <View
             android:id="@+id/mainrect"
             android:layout_width="match_parent"
@@ -246,7 +244,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="22dp"
                 android:layout_marginBottom="241dp"
-                android:text="미식반점"
                 android:textAppearance="@style/shopname"
                 android:textStyle="bold" />
             <!-- opentime -->
@@ -260,7 +257,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="22dp"
                 android:layout_marginBottom="220dp"
-                android:text="영업 시간: 9:00AM ~ 11:00PM"
                 android:textAppearance="@style/shopname"
                 android:textStyle="bold" />
             <!-- shopExplain -->
@@ -273,37 +269,23 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="22dp"
                 android:layout_marginBottom="156dp"
-                android:text="해당 가게는 이러이러한 이러이러해서 이러이러해요 이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러이러"
                 android:textAppearance="@style/shopname" />
 
             <!-- shopImage -->
-            <View
+            <Button
                 android:id="@+id/shopimage"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentTop="false"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="0dp"
                 android:layout_marginTop="0dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="151dp"
-                android:background="@drawable/shopimage" />
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="156dp"
+                android:background="@drawable/reviews" />
             <!-- shopImagerect -->
-            <View
-                android:id="@+id/shopimagerect"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentTop="false"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="151dp"
-                android:background="@drawable/shopimagerect" />
 
             <FrameLayout
                 android:layout_width="match_parent"

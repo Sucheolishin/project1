@@ -39,6 +39,7 @@
         <activity android:name=".NoticeActivity"/>
         <activity android:name=".ReviewActivity"/>
         <activity android:name=".PickActivity"/>
+        <activity android:name=".WriteActivity"/>
         <meta-data android:name="com.kakao.sdk.AppKey"
             android:value="9a28aaeb10e93882b5c7d493e00c2905"/>
     </application>

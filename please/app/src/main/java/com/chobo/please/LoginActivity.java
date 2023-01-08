@@ -72,6 +72,7 @@ public class LoginActivity extends Activity {
                     // 로그인 하면서 사용자 정보 넘기기
                     intent.putExtra("userID", userid);
                     intent.putExtra("userPassword", userPassword);
+                    finish();
                     startActivity(intent);
                 }
                 else{
@@ -85,6 +86,7 @@ public class LoginActivity extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
