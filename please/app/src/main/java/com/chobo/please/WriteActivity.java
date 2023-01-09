@@ -56,9 +56,6 @@ public class WriteActivity extends Activity {
                                 System.out.println(reviewText);
                                 if(response.body()){
                                     Toast.makeText(getApplicationContext(), "리뷰가 작성되었습니다.", Toast.LENGTH_SHORT).show();
-
-                                    Intent intent = new Intent(WriteActivity.this, MainActivity.class );
-                                    startActivity(intent);
                                     finish();
                                 }
                                 else{
