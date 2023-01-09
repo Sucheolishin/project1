@@ -101,7 +101,7 @@
     <style name="shopname">
 
         <item name="android:textSize">
-            15sp
+            13sp
         </item>
 
         <item name="android:textColor">

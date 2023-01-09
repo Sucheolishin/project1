@@ -8,6 +8,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,14 +17,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import net.daum.mf.map.api.CameraUpdateFactory;
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
+import lombok.ToString;
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,20 +48,22 @@ public class MainActivity extends AppCompatActivity {
     Button review;
     Button pick;
     Button logout;
-    List<Post> postList;
-    List<MapPOIItem> markers;
-    int pickPost;
+    List<Post> postList = new LinkedList<>();
+    List<MapPOIItem> markers = new LinkedList<>();
+    List<Review> reviewList= new LinkedList<>();
+    int pickPost = 0;
+    String mapPick;
 
     //리뷰 넘기기 변수
     private ViewPager2 mPager;
     private FragmentStateAdapter pagerAdapter;
-    private int num_page = 5;       //개수 통신을 통해 변경
-
-    private class RegisterTask extends AsyncTask<Call,Void, String> {
-        protected String doInBackground(Call... calls) {
+    private int num_page = 0;       //개수 통신을 통해 변경
+    
+    private class PostTask extends AsyncTask<Call,Void, List<Post>> {
+        protected List<Post> doInBackground(Call... calls) {
             try {
-                Call<String> call = calls[0];
-                Response<String> response=call.execute();
+                Call<List<Post>> call = calls[0];
+                Response<List<Post>> response=call.execute();
                 return response.body();
             } catch (IOException e) {
 
@@ -63,12 +71,11 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
-
-    private class PostTask extends AsyncTask<Call,Void, List<Post>> {
-        protected List<Post> doInBackground(Call... calls) {
+     private class ReviewTask extends AsyncTask<Call,Void, List<Review>> {
+        protected List<Review> doInBackground(Call... calls) {
             try {
-                Call<List<Post>> call = calls[0];
-                Response<List<Post>> response=call.execute();
+                Call<List<Review>> call = calls[0];
+                Response<List<Review>> response=call.execute();
                 return response.body();
             } catch (IOException e) {
 
@@ -96,28 +103,44 @@ public class MainActivity extends AppCompatActivity {
         logout = findViewById(R.id.list6);
         write_review = findViewById(R.id.shopimage);
 
-        //뷰페이저 연결
-        mPager = findViewById(R.id.viewpager);
-        pagerAdapter = new MyAdapter(this, num_page);
-        mPager.setAdapter(pagerAdapter);
-        mPager.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
-        mPager.setCurrentItem(1000);        //천장정도의 이미지를 생성하여 사실상 무한으로 만들기
-        mPager.setOffscreenPageLimit(num_page);        //최대 리뷰 개수(해당도 통신을 통해 변경)
 
-        mPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
-                if(positionOffsetPixels == 0){
-                    mPager.setCurrentItem(position);
-                }
-            }
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-            }
-        });
 
+        Connection connection2 = new Connection();
+        PostAPI postAPI2 = connection2.getRetrofit().create(PostAPI.class);
+        postAPI2.getPostInfo(0)
+                .enqueue(new Callback<List<Post>>() {
+                    @Override
+                    public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+                        postList.clear();
+                        markers.clear();
+                        postList = response.body();
+                        if(postList != null){
+                            //위 정보를 가지고 핀찍기
+                            for(int i = 0; i < postList.size(); i++){
+                                MapPOIItem mapPOIItem = new MapPOIItem();
+                                mapPOIItem.setMapPoint(MapPoint.mapPointWithGeoCoord
+                                        (postList.get(i).getLongitude(), postList.get(i).getLatitude()));
+                                mapPOIItem.setMarkerType(MapPOIItem.MarkerType.BluePin);
+                                mapPOIItem.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);
+                                mapPOIItem.setItemName(postList.get(i).getMarket_name());
+
+                                markers.add(mapPOIItem);
+                            }
+                            mapView.addPOIItems(markers.toArray(new MapPOIItem[markers.size()]));
+                            if(markers.size()>0) {
+                                mapView.moveCamera(CameraUpdateFactory.newMapPointAndDiameter(markers.get(markers.size()-1).getMapPoint(), 500));
+                            }
+                            else{
+                                Toast.makeText(MainActivity.this,"검색한 장소가 없습니다!",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Post>> call, Throwable t) {
+
+                    }
+                });
         //통신해서 로그인 되었는지 확인
          if(getIntent().hasExtra("userID")){
             userId = getIntent().getStringExtra("userID");
@@ -127,13 +150,30 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     Connection connection = new Connection();
                     UserAPI userAPI = connection.getRetrofit().create(UserAPI.class);
-                    Call<String> call = userAPI.getUserName(userId);
-                    userName = new MainActivity.RegisterTask().execute(call).get();
+                    userAPI.getUserName(userId)
+                            .enqueue(new Callback<User>() {
+                                @Override
+                                public void onResponse(Call<User> call, Response<User> response) {
+                                    if(response.body() != null){
+                                        User tmp = new User();
+                                        tmp = response.body();
+                                        userName = tmp.getName();
+                                        login_btn.setTextSize(25);
+                                        login_btn.setText(userName);
+                                    }
+                                    else{
+                                        Toast.makeText(getApplicationContext(), "바디없음 실패", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                                @Override
+                                public void onFailure(Call<User> call, Throwable t) {
+                                    t.printStackTrace();
+                                    Toast.makeText(getApplicationContext(), "닉네임 불러오기 실패", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                 }catch(Exception e){
 
                 }
-               login_btn.setTextSize(25);
-               login_btn.setText(userName);
             }
             else{
                 login_btn.setText("로그인 필요");
@@ -192,44 +232,99 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.task5rect: category = 4; break;
                     default: category = 5; break;
                 }
+                postList.clear();
                 markers.clear();
                 Call<List<Post>> call = postAPI.getPostInfo(category);
-                postList = new MainActivity.PostTask().execute(call).get();
+                postList = new PostTask().execute(call).get();
             }catch(Exception e){
 
             }
+            if(postList != null){
+                //위 정보를 가지고 핀찍기
+                for(int i = 0; i < postList.size(); i++){
+                    MapPOIItem mapPOIItem = new MapPOIItem();
+                    mapPOIItem.setMapPoint(MapPoint.mapPointWithGeoCoord
+                            (postList.get(i).getLongitude(), postList.get(i).getLatitude()));
+                    mapPOIItem.setMarkerType(MapPOIItem.MarkerType.BluePin);
+                    mapPOIItem.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);
+                    mapPOIItem.setItemName(postList.get(i).getMarket_name());
+
+                    markers.add(mapPOIItem);
+                }
+                mapView.addPOIItems(markers.toArray(new MapPOIItem[markers.size()]));
+                if(markers.size()>0) {
+                    mapView.moveCamera(CameraUpdateFactory.newMapPointAndDiameter(markers.get(markers.size()-1).getMapPoint(), 500));
+                }
+                else{
+                    Toast.makeText(MainActivity.this,"검색한 장소가 없습니다!",Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
-        if(postList != null){
-            //위 정보를 가지고 핀찍기
-            for(int i = 0; i < postList.size(); i++){
-                markers.add(new MapPOIItem());
-                markers.get(i).setItemName(postList.get(i).getMarket_name());
-                markers.get(i).setTag(i);
-                markers.get(i).setMapPoint(MapPoint.mapPointWithGeoCoord
-                         (postList.get(i).getLatitude(), postList.get(i).getLongitude()));
-                markers.get(i).setMarkerType(MapPOIItem.MarkerType.BluePin);
-                markers.get(i).setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);
-            }
-            mapView.addPOIItems(markers.toArray(new MapPOIItem[markers.size()]));;
-        }
-
-        mapView.setPOIItemEventListener(new MapView.POIItemEventListener() {
+        mapView.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onPOIItemSelected(MapView mapView, MapPOIItem mapPOIItem) {
-                pickPost = mapPOIItem.getTag();
-                Post post = postList.get(pickPost);
-                TextView shopName = findViewById(R.id.shopname);
-                shopName.setText(post.getMarket_name());
-                TextView openTime = findViewById(R.id.opentime);
-                openTime.setText("영업 시간: " + post.getOpen_time());
-                TextView shopExplain = findViewById(R.id.shopexplain);
-                shopExplain.setText(post.getMarket_Info());
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                mapView.setPOIItemEventListener(new MapView.POIItemEventListener() {
+                    @Override
+                    public void onPOIItemSelected(MapView mapView, MapPOIItem mapPOIItem) {
+                        //리뷰 불러오기
+                        Connection connection = new Connection();
+                        ReviewAPI reviewAPI = connection.getRetrofit().create(ReviewAPI.class);
+                        Call<List<Review>> call = reviewAPI.getReview(mapPOIItem.getItemName());
+                        try {
+                            reviewList.clear();
+                            reviewList = new ReviewTask().execute(call).get();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        mapPick = mapPOIItem.getItemName();
+                        String tmp = mapPOIItem.getItemName();
+                        for(Post p : postList){
+                            if(p.getMarket_name().matches(tmp)){
+                                TextView shopName = findViewById(R.id.shopname);
+                                shopName.setText(p.getMarket_name());
+                                TextView openTime = findViewById(R.id.opentime);
+                                openTime.setText(p.getOpen_time());
+                                TextView shopExplain = findViewById(R.id.shopexplain);
+                                shopExplain.setText(p.getDetails());
+                            }
+                        }
+
+                        //리뷰
+                        if(reviewList.size() != 0){
+                            num_page = reviewList.size();
+                            //뷰페이저 연결
+                            mPager = findViewById(R.id.viewpager);
+                            pagerAdapter = new MyAdapter(MainActivity.this, num_page, reviewList);
+                            mPager.setAdapter(pagerAdapter);
+                            mPager.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
+                            mPager.setCurrentItem(num_page);        //천장정도의 이미지를 생성하여 사실상 무한으로 만들기
+                            mPager.setOffscreenPageLimit(num_page);        //최대 리뷰 개수(해당도 통신을 통해 변경)
+
+                            mPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+                                @Override
+                                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                                    super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+                                    if(positionOffsetPixels == 0){
+                                        mPager.setCurrentItem(position);
+                                    }
+                                }
+                                @Override
+                                public void onPageSelected(int position) {
+                                    super.onPageSelected(position);
+                                }
+                            });
+                        }
+                    }
+                    public void onCalloutBalloonOfPOIItemTouched(MapView mapView, MapPOIItem mapPOIItem) {}
+                    public void onCalloutBalloonOfPOIItemTouched(MapView mapView, MapPOIItem mapPOIItem, MapPOIItem.CalloutBalloonButtonType calloutBalloonButtonType) {}
+                    public void onDraggablePOIItemMoved(MapView mapView, MapPOIItem mapPOIItem, MapPoint mapPoint) {}
+                });
+                return false;
             }
-            public void onCalloutBalloonOfPOIItemTouched(MapView mapView, MapPOIItem mapPOIItem) {}
-            public void onCalloutBalloonOfPOIItemTouched(MapView mapView, MapPOIItem mapPOIItem, MapPOIItem.CalloutBalloonButtonType calloutBalloonButtonType) {}
-            public void onDraggablePOIItemMoved(MapView mapView, MapPOIItem mapPOIItem, MapPoint mapPoint) {}
         });
+
+
         //하단 바 감추기 or 보이기
         down_arr.setOnClickListener(view -> {
             bottom_bar.setVisibility(View.GONE);
@@ -254,7 +349,6 @@ public class MainActivity extends AppCompatActivity {
            }
            else{
                Toast.makeText(getApplicationContext(), "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
-               return;
            }
           
         });
@@ -262,22 +356,22 @@ public class MainActivity extends AppCompatActivity {
        notice.setOnClickListener(view ->{
            if(isLog){
                Intent intent = new Intent(MainActivity.this, NoticeActivity.class);
+               intent.putExtra("UserName", userName);
                startActivity(intent);
            }
            else{
                Toast.makeText(getApplicationContext(), "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
-               return;
            }
        });
 
        review.setOnClickListener(view ->{
             if(isLog){
                 Intent intent = new Intent(MainActivity.this, ReviewActivity.class);
+                intent.putExtra("userName", userName);
                 startActivity(intent);
             }
             else{
                 Toast.makeText(getApplicationContext(), "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
-                return;
             }
        });
 
@@ -288,7 +382,6 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                 Toast.makeText(getApplicationContext(), "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
-                return;
             }
        });
 
@@ -307,13 +400,12 @@ public class MainActivity extends AppCompatActivity {
        write_review.setOnClickListener(view -> {
            if(isLog){
                Intent intent = new Intent(MainActivity.this, WriteActivity.class);
-               /*intent.putExtra("PostId", postList.get(pickPost).getMarket_id());*/
-               intent.putExtra("PostName", postList.get(pickPost).getMarket_name());
+               intent.putExtra("PostName", mapPick);
+               intent.putExtra("UserName", userName);
                startActivity(intent);
            }
            else{
                Toast.makeText(getApplicationContext(), "로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
-               return;
            }
        });
     }

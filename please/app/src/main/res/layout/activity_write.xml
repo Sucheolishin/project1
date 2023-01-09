@@ -57,33 +57,24 @@
         android:background="#FDF3F3"
         android:gravity="top|left"
         android:hint="리뷰를 작성해주세요."
-        android:inputType="text"
-        android:maxLength="16"
+        android:inputType="textMultiLine"
         android:selectAllOnFocus="true"
+        android:singleLine="false"
         android:textAppearance="@style/Id_Ex"
+        android:scrollHorizontally="false"
         android:textColor="@color/black"
         android:textColorHint="#808080" />
 
+
     <Button
-        android:id="@+id/review_back"
+        android:id="@+id/review_write"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="0dp"
         android:layout_marginRight="0dp"
-        android:background="#FFE4E1" />
-
-    <View
-        android:id="@+id/review_write"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/reviews"
-        android:translationZ="2dp" />
+        android:background="@drawable/reviews" />
 
 
 </RelativeLayout>

@@ -14,5 +14,5 @@ public interface UserAPI {
     @PUT("/user/register/{id}/{password}/{name}")
     Call<Boolean> insertUser(@Path("id")String id,@Path("password")String password, @Path("name")String name);
     @GET("/user/getUserName/{id}")
-    Call<String> getUserName(@Path("id")String id);
+    Call<User> getUserName(@Path("id")String id);
 }

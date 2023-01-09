@@ -82,7 +82,7 @@
             android:layout_height="30dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="280dp"
+            android:layout_marginBottom="350dp"
             android:background="@drawable/downarrow" />
 
         <Button
@@ -219,7 +219,7 @@
             <View
                 android:id="@+id/explainrect"
                 android:layout_width="match_parent"
-                android:layout_height="280dp"
+                android:layout_height="350dp"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="0dp"
                 android:background="@drawable/explainrect" />
@@ -227,7 +227,7 @@
             <View
                 android:id="@+id/shops"
                 android:layout_width="match_parent"
-                android:layout_height="116dp"
+                android:layout_height="190dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="10dp"
@@ -237,38 +237,41 @@
             <!-- shopName -->
             <TextView
                 android:id="@+id/shopname"
-                android:layout_width="300dp"
-                android:layout_height="18dp"
+                android:layout_width="357dp"
+                android:layout_height="16dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="22dp"
-                android:layout_marginBottom="241dp"
+                android:layout_marginBottom="320dp"
                 android:textAppearance="@style/shopname"
                 android:textStyle="bold" />
             <!-- opentime -->
 
             <TextView
                 android:id="@+id/opentime"
-                android:layout_width="300dp"
-                android:layout_height="18dp"
+                android:layout_width="360dp"
+                android:layout_height="70dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="22dp"
-                android:layout_marginBottom="220dp"
+                android:layout_marginBottom="250dp"
                 android:textAppearance="@style/shopname"
                 android:textStyle="bold" />
             <!-- shopExplain -->
             <TextView
                 android:id="@+id/shopexplain"
-                android:layout_width="260dp"
-                android:layout_height="60dp"
+                android:layout_width="330dp"
+                android:layout_height="90dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="22dp"
                 android:layout_marginBottom="156dp"
+                android:scrollHorizontally="false"
+                android:inputType="textMultiLine"
+                android:text = ""
                 android:textAppearance="@style/shopname" />
 
             <!-- shopImage -->

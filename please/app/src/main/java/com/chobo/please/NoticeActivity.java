@@ -7,46 +7,65 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.LinkedList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class NoticeActivity extends Activity {
-    LinkedList<String>nameList = new LinkedList<>();        //서버에서 이름 받아와서 넣기
-    LinkedList<String>dateList = new LinkedList<>();        //서버에서 날짜 받아와서 넣기
-    LinkedList<String>readList = new LinkedList<>();        //서버에서 정보 받아와서 넣기
-
     LayoutInflater layoutInflater;
     LinearLayout container;
     View view;
     Context context;
+    String userName;
+    List<Notice> noticeList = new LinkedList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notice);
-
         context = this;
-
-        /*예시*/
-        nameList.add("씨홍스"); dateList.add("2023-01-08"); readList.add("내 관심업체에 새로운 리뷰가 작성되었어요!");
-        nameList.add("미식반점"); dateList.add("2023-01-08"); readList.add("내 관심업체가 오픈했어요!");
-        nameList.add("땅땅치킨"); dateList.add("2023-01-08"); readList.add("내 관심업체가 잘하고있어요!");
-        nameList.add("헬스짐"); dateList.add("2023-01-08"); readList.add("내 관심업체에 새로운 리뷰가 작성되었어요!");
-
+        userName = getIntent().getStringExtra("UserName");
         container = findViewById(R.id.notice);
 
         layoutInflater = LayoutInflater.from(this);
 
-        for(int i = 0; i<(nameList.size()); i++){
-            view = layoutInflater.inflate(R.layout.notice_layout,null, false);
-            TextView nameText = view.findViewById(R.id.ntask1name);
-            nameText.setText(nameList.get(i));
-            TextView dateText = view.findViewById(R.id.ntask1date);
-            dateText.setText(dateList.get(i));
-            TextView readText = view.findViewById(R.id.ntask1con);
-            readText.setText(readList.get(i));
+        Connection connection = new Connection();
+        NoticeAPI noticeAPI = connection.getRetrofit().create(NoticeAPI.class);
+        noticeAPI.getReview(userName).enqueue(new Callback<List<Notice>>(){
+            @Override
+            public void onResponse(Call<List<Notice>> call, Response<List<Notice>> response) {
+                noticeList.clear();
+                noticeList = response.body();
+                if (noticeList != null) {
+                    for (int i = 0; i < (noticeList.size()); i++) {
+                        view = layoutInflater.inflate(R.layout.notice_layout, null, false);
+                        TextView nameText = view.findViewById(R.id.ntask1name);
+                        nameText.setText(noticeList.get(i).getMarket_name());
+                        TextView dateText = view.findViewById(R.id.ntask1date);
+                        dateText.setText(noticeList.get(i).getDate());
+                        TextView readText = view.findViewById(R.id.ntask1con);
+                        readText.setText(noticeList.get(i).getNotice_text());
 
-            container.addView(view);
-        }
+                        container.addView(view);
+                    }
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "알림이 없습니다.", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Notice>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), userName, Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
+            }
+        });
+
     }
 }
